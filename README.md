@@ -53,7 +53,7 @@ All settings live in your `.env` file:
 
 | Variable | Default | Description |
 |---|---|---|
-| `PHOTON_VERSION` | `0.7.4` | Photon release to build |
+| `PHOTON_VERSION` | `1.0.1` | Photon release to build |
 | `REGION` | `de` | Country code, continent name, or `planet` |
 | `DATA_TYPE` | `db` | `db` = precompiled archive · `dump` = jsonl.zst import |
 | `AUTO_DOWNLOAD` | `true` | Auto-fetch data if none is found |
