@@ -1,0 +1,123 @@
+# =============================================================================
+# Photon Geocoder – docker-compose.yml
+#
+# Quick start (Germany, pre-compiled DB):
+#   REGION=de docker compose up -d
+#
+# Use a .jsonl.zst dump (import mode):
+#   REGION=de DATA_TYPE=dump docker compose up -d
+#
+# Use your own pre-downloaded dump (place it in ./dumps/):
+#   docker compose up -d        # entrypoint detects the file automatically
+#
+# Use a pre-existing photon_data/ folder (place it in ./photon_data/):
+#   docker compose up -d        # entrypoint detects it and skips download
+#
+# Full env-var reference is in entrypoint.sh and .env.example
+# =============================================================================
+
+services:
+  photon:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Pin a specific Photon release. Check https://github.com/komoot/photon/releases
+        PHOTON_VERSION: "${PHOTON_VERSION:-1.0.1}"
+
+    container_name: photon
+
+    restart: unless-stopped
+
+    ports:
+      - "2322:2322"
+
+    volumes:
+      # Persistent search index – survives container restarts
+      - photon_data:/photon/photon_data
+
+      # Drop a *.jsonl.zst or *.tar.bz2 file here for manual import
+      - photon_dumps:/photon/dumps
+
+    environment:
+      # ── Which data to use ───────────────────────────────────────────────
+      # Country / region to download.  Examples:
+      #   planet        → world-wide (~90 GB extracted)
+      #   europe        → European continent
+      #   de            → Germany
+      #   fr            → France
+      #   us            → United States
+      #   gb            → United Kingdom
+      #   es            → Spain
+      #   it            → Italy
+      #   pt            → Portugal
+      #   br            → Brazil
+      #   (any ISO-3166-1 alpha-2 code, or a continent name)
+      REGION: "${REGION:-belgium}"
+
+
+      # Set to "false" to disable auto-download (requires manual data provisioning)
+      AUTO_DOWNLOAD: "${AUTO_DOWNLOAD:-true}"
+
+      # Languages for jsonl.zst dump import (comma-separated ISO codes)
+      LANGUAGES: "${LANGUAGES:-en,de,fr,es}"
+
+      # ── Java / Photon tuning ─────────────────────────────────────────────
+      # Increase -Xmx for large datasets (planet needs ≥8g)
+      JAVA_OPTS: "${JAVA_OPTS:--Xmx2g -Xms512m}"
+
+      # Extra Photon command-line flags:
+      #   -cors-any              → allow CORS from any origin
+      #   -cors-origin <origin>  → allow CORS from specific origin
+      #   -listen-ip <ip>        → bind to specific IP
+      PHOTON_OPTS: "${PHOTON_OPTS:-}"
+
+      # ── Download options ─────────────────────────────────────────────────
+      # Override the base download URL (e.g. a community mirror)
+      BASE_URL: "${BASE_URL:-https://download1.graphhopper.com/public}"
+
+      # Set to "true" to skip MD5 checksum verification
+      SKIP_MD5: "${SKIP_MD5:-false}"
+
+    # Make sure the container has enough time to download & import before
+    # health checks start failing
+    healthcheck:
+      test: ["CMD", "curl", "-fsSL", "http://localhost:2322/status"]
+      interval: 30s
+      timeout: 10s
+      start_period: 10m   # increase to 30m+ for full planet or large dumps
+      retries: 5
+
+    # Resource limits (adjust for your host)
+    deploy:
+      resources:
+        limits:
+          memory: "${MEMORY_LIMIT:-4g}"
+        reservations:
+          memory: "${MEMORY_RESERVATION:-1g}"
+
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Named volumes
+# ─────────────────────────────────────────────────────────────────────────────
+volumes:
+  photon_data:
+    # Uncomment to use a bind-mount instead of a named Docker volume:
+    # driver: local
+    # driver_opts:
+    #   type: none
+    #   o: bind
+    #   device: ./photon_data
+
+  photon_dumps:
+    # Uncomment to map ./dumps/ on the host for easy file dropping:
+    # driver: local
+    # driver_opts:
+    #   type: none
+    #   o: bind
+    #   device: ./dumps
