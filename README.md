@@ -235,3 +235,94 @@ REGION=de docker compose up -d
 Built on [Komoot Photon](https://github.com/komoot/photon) · Data © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright)
 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+# Hi, I'm H 👋
+
+Principal Engineer & Founder of **HD International Ltd** — a Bulgarian-based software consultancy delivering
+enterprise-grade solutions across Architecture, Cloud, AI, DevOps, and Operations.
+
+---
+
+## 🏢 HD International Ltd
+
+> *Engineering clarity from complexity.*
+
+We partner with startups and enterprises to design, build, and operate resilient, scalable systems.
+
+---
+
+## 🛠️ Services
+
+**Software Architecture**
+Designing scalable, maintainable systems — microservices, event-driven architecture, domain-driven
+design, and API strategy.
+
+**Cloud Engineering** · AWS · GCP · Azure . On Premise
+Infrastructure design, cloud migrations, cost optimisation, and multi-cloud strategies.
+
+**DevOps & CI/CD**
+End-to-end pipeline automation, containerisation (Docker/Kubernetes), GitOps, and platform engineering.
+
+**AI & ML Solutions**
+Integrating LLMs, building ML pipelines, and delivering production-ready AI features into existing products.
+
+**Operations & SRE**
+Observability, incident management, SLA design, and reliability engineering for critical systems.
+
+---
+
+## 🧰 Core Stack
+
+**Languages**
+`Java` `C#` `PHP 8+` `Python` `Go` `TypeScript` `JavaScript` `Rust` `Bash` `Ruby` `Scala` `Kotlin`
+
+**Frameworks & Libraries**
+`Spring Boot` `ASP.NET Core` `Laravel` `Symfony` `FastAPI` `Django` `Flask` `NestJS` `Express`
+`React` `Next.js` `Angular` `LangChain` `LlamaIndex` `Celery` `GraphQL`
+
+**Cloud & Infrastructure**
+`AWS` `GCP` `Azure` `Terraform` `Pulumi` `CDK` `Ansible` `Packer` `Vault` `Consul`
+
+**Containers & Orchestration**
+`Docker` `Kubernetes` `Helm` `Istio` `ArgoCD` `FluxCD` `Kustomize` `Rancher` `OpenShift`
+
+**CI/CD & DevOps**
+`GitHub Actions` `GitLab CI` `Jenkins` `CircleCI` `TeamCity` `Tekton` `SonarQube` `Nexus`
+
+**Data & Messaging**
+`PostgreSQL` `MySQL` `MongoDB` `Redis` `Elasticsearch` `Kafka` `RabbitMQ` `NATS` `Kinesis`
+`Snowflake` `BigQuery` `dbt` `Airflow` `Spark`
+
+**AI & ML**
+`LangChain` `LlamaIndex` `OpenAI API` `Anthropic API` `HuggingFace` `PyTorch` `TensorFlow`
+`scikit-learn` `MLflow` `Weights & Biases` `Pinecone` `Weaviate` `FAISS`
+
+**Observability & Operations**
+`Datadog` `Prometheus` `Grafana` `Loki` `Jaeger` `OpenTelemetry` `PagerDuty` `Sentry`
+`ELK Stack` `New Relic` `Dynatrace`
+
+**Security & Compliance**
+`Vault` `Trivy` `Snyk` `OWASP ZAP` `Falco` `Checkov` `AWS Security Hub` `IAM` `OAuth2` `OIDC`
+
+---
+
+## 📬 Work With Us
+
+We take on select consulting engagements and fractional CTO mandates.
+
+📧 hdinternational82@gmail.com 
+💼 [LinkedIn]([https://www.linkedin.com/in/time-to-move-h/])
+
+> *Registered in Bulgaria & Plovdiv · HD International Ltd*
+> VAT BG-204723748
