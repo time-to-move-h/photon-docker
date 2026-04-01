@@ -246,7 +246,7 @@ Built on [Komoot Photon](https://github.com/komoot/photon) · Data © [OpenStree
 
 
 
-
+---
 # Hi, I'm H 👋
 
 Principal Engineer & Founder of **HD International Ltd** — a Bulgarian-based software consultancy delivering
